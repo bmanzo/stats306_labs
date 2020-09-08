@@ -1,0 +1,359 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Lab 1: Installing Jupyter Notebook and Diving into `ggplot`\n",
+    "Material heavily borrowed from Byoungwook Jang. \n",
+    "\n",
+    "## Office Hours\n",
+    "Brian Manzo: Th 9:00-10:30am\\\n",
+    "Derek Hansen: M 9:00-10:30am\\\n",
+    "Yanxin Jin: Tu 8:30-10:00am\\\n",
+    "Jing Ouyang: Wed 12:00pm-1:30pm\\\n",
+    "Professor Tan: Tu 8:30-9:30pm and F 2:00-3:00pm\n",
+    "    \n",
+    "    \n",
+    "## Contact\n",
+    "Homework and lecture questions: [Piazza](https://umich.instructure.com/courses/394271/external_tools/67)\\\n",
+    "Personal / confidential question: email me or Professor Tan (depending on the issue)\\\n",
+    "Email: bmanzo@umich.edu\n",
+    "    \n",
+    "## Lab contents?\n",
+    "Note are available at my GitHub page: https://github.com/bmanzo/stats306_labs\n",
+    "    \n",
+    "## Expectations from the lab?\n",
+    "\n",
+    "## Install R\n",
+    "Download R at https://repo.miserver.it.umich.edu/cran/ and install R 4.0.2.  \n",
+    "Note: RStudio (https://rstudio.com/) is also useful to intall. For further learning of R after this course, RStudio is a very popular tool. \n",
+    "\n",
+    "## Installing `jupyter` notebook\n",
+    "\n",
+    "First of all, let's get started with the Jupyter notebook. Regardless of the OS you are using, go onto Anaconda homepage and download ANACONDA python 3 <https://www.anaconda.com/download/>. \n",
+    "\n",
+    "Once you have yours installed,\n",
+    "    *windows* -- start up Anaconda Prompt\n",
+    "    *linux/macOS* -- start up your terminal\n",
+    "\n",
+    "You need to install IRkernel into your jupyter notebook, use the instructions in https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/. \n",
+    "    \n",
+    "## Homework submission\n",
+    "Write your homework in a `jupyter` notebook and submit .ipynb file to Canvas. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Getting Started"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# get working directory\n",
+    "getwd()\n",
+    "\n",
+    "list.files()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Vectors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x <- 1:10\n",
+    "print(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x <- seq(from=1, to=10, by=1)\n",
+    "print(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(x^2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(x[4:9])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sum(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mean(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Logical values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(x > 1)\n",
+    "print(x[x > 1])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Dataframe"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X <- data.frame(x=x, y=x^2)\n",
+    "X\n",
+    "print(class(X))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(X$x)\n",
+    "print(X[1,1])\n",
+    "X[1,]\n",
+    "print(X[,1])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X[1:4,]\n",
+    "X[c(2,4),]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "colnames(X) <- c('val1', 'val2')\n",
+    "X"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Playing around with `ggplot`\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "library(tidyverse)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "head(diamonds)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary(diamonds)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Creating the first plot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ggplot(data=diamonds) + \n",
+    "    geom_point(mapping = aes(x = carat, y = price))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ggplot(data=diamonds) + \n",
+    "    geom_point(mapping = aes(x = carat, y = price)) +\n",
+    "    labs(x = 'Carats', y = 'Price($)') +\n",
+    "    ggtitle('Diamond size by carat')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ggplot(data = diamonds) + \n",
+    "    geom_point(mapping = aes(x = carat, y = price, color = clarity)) +\n",
+    "    labs(x = 'Carats', y = 'Price($)') + \n",
+    "    ggtitle('Diamond price by carat count')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ggplot(data = diamonds) + \n",
+    "    geom_point(mapping = aes(x = carat, y = price), color = 'blue') +\n",
+    "    labs(x = 'Carats', y = 'Price($)') + \n",
+    "    ggtitle('Diamond price by carat count')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ggplot(data = diamonds) + \n",
+    "    # geom_point(mapping = aes(x = carat, y = price, color = clarity)) +\n",
+    "    geom_bar(mapping = aes(x = color, fill = cut)) +\n",
+    "    labs(x = 'Color', y = 'Count') + \n",
+    "    ggtitle('Color counts')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Package documentation\n",
+    "`?head`\n",
+    "`?tail`\n",
+    "`?geom_bar`\n",
+    "\n",
+    "You can always google the package documentations as well. For example, can you find the documentation page for `rnorm`?\n",
+    "    \n",
+    "## Exercise\n",
+    "1. What is the default value of the mean and standard deviation used by the `rnorm` function in R to generate a value from a normal distribution? How could you check this without using the documentation?\n",
+    "2. Create a boxplot of `price` grouped by the levels in the `cut` variable."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "# boxplot helps to visualize the variability of a price for each cut\n",
+    "ggplot(data = diamonds) + \n",
+    "    geom_boxplot() +\n",
+    "    labs() + \n",
+    "    ggtitle(')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Facets\n",
+    "If we want more segmented plots"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "ggplot(data = diamonds) + \n",
+    "    geom_point() +\n",
+    "    labs() + \n",
+    "    facet_grid() +\n",
+    "    ggtitle()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "R",
+   "language": "R",
+   "name": "ir"
+  },
+  "language_info": {
+   "codemirror_mode": "r",
+   "file_extension": ".r",
+   "mimetype": "text/x-r-source",
+   "name": "R",
+   "pygments_lexer": "r",
+   "version": "3.6.1"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
